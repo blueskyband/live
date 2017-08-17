@@ -1,0 +1,108 @@
+@mixin cf {
+	&::after {
+		display: block;
+		content: "";
+		clear: both;
+	}
+}
+
+@mixin fb ($a:space-between, $b:center) {
+	display: flex;
+	justify-content: $a;
+	align-items: $b;
+	flex-wrap: wrap;
+	
+}
+
+@mixin answer_num () {
+	border: none;
+	border-bottom: 2px solid $baseColor;
+	background-color: transparent;
+	padding: 0;
+	padding-bottom: 0;
+	width: 3.5em;
+	margin: 0;
+	margin-right: 16px;
+	margin-left: 2px;
+	color: $baseColor;
+	text-align: right;
+	padding-right: 4px;
+	vertical-align: bottom;
+	&.w2e {
+		width: 1.5em;
+	}
+}
+@mixin num_style {
+	border: none;
+	border-bottom: 2px solid $baseColor;
+	border-radius: 0;
+	padding: .1rem .6rem;
+	&:focus {
+		border-bottom: 2px solid lighten($baseColor, 10%);
+	}
+	&[disabled] {
+		border-bottom-color: $light_gray;
+	}
+}
+@mixin error_message {
+	color: $alert;
+	&::before {
+		content: "\f071";
+		font-family: FontAwesome;
+		margin-right: 5px;
+	}
+}
+
+@mixin disclaimer {
+	font-size: 70%;
+}
+
+@mixin input ($isnum:false) {
+	outline: 0;
+	line-height: 1;
+	border: 1px solid $bdc;
+	border-radius: 4px;
+	display: inline-block;
+	transition: .2s;
+	color: $baseColor;
+	font-size: 100%;
+	padding: .7em;
+	box-shadow: 0 0 0 transparent;
+	&[size="2"] {
+		width: 3em;
+	}
+	&[disabled] {
+		border-bottom-color: $light_gray;
+		opacity: .5;
+	}
+	&:focus {
+		background-color: lighten($baseColor, 50%);
+		//border: 2px solid lighten($baseColor, 10%);
+	}
+	&.form {
+    	
+	}
+	&.num {
+		@include num_style;
+	}
+	@if $isnum {
+		@include num_style;
+	}
+}
+
+@keyframes answer_input_glow {
+	0% {
+		box-shadow: 0 0 3px rgba($baseColor, 0);
+	}
+	50% {
+		box-shadow: 0 0 3px $baseColor;
+	}
+}
+@-webkit-keyframes spin {
+	0% {transform: rotate(360deg)}
+	100% {transform: rotate(0deg)}
+}
+@keyframes spin {
+	0% {transform: rotate(360deg)}
+	100% {transform: rotate(0deg)}
+}
