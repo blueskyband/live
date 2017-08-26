@@ -901,6 +901,9 @@ h2 {
   .p-live-info p {
     margin: 0; }
 
+.p-members {
+  font-size: 90%; }
+
 .p-playsongs ul, .p-playsongs li {
   margin: 0;
   padding: 0;
